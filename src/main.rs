@@ -9,7 +9,7 @@ impl Peano {
     fn to_i(&self) -> u32 {
         match *self {
             Peano::Zero => 0,
-            _ => 1
+            _ => 1,
         }
     }
 }
@@ -22,7 +22,7 @@ fn zero() -> Peano {
 fn test_zero() {
     assert!(match zero() {
         Peano::Zero => true,
-        _ => false
+        _ => false,
     });
 }
 
