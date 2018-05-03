@@ -10,7 +10,7 @@ impl <'a> Peano<'a> {
     fn to_i(&self) -> u32 {
         match *self {
             Peano::Zero => 0,
-            _ => 1,
+            Peano::Suc(prev) => 1 + prev.to_i(),
         }
     }
 
