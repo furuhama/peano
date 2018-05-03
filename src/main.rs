@@ -12,6 +12,10 @@ impl <'a> Peano<'a> {
             _ => 1,
         }
     }
+
+    fn suc(&'a self) -> Peano<'a> {
+        Peano::Suc(self)
+    }
 }
 
 fn zero<'a>() -> Peano<'a> {
@@ -38,6 +42,14 @@ fn test_to_i() {
 #[test]
 fn test_suc() {
     assert!(match suc(&zero()) {
+        Peano::Suc(_) => true,
+        _ => false,
+    });
+}
+
+#[test]
+fn test_impl_suc() {
+    assert!(match zero().suc() {
         Peano::Suc(_) => true,
         _ => false,
     });
