@@ -1,5 +1,6 @@
 // Peano's national number
 
+#[derive(Debug)]
 enum Peano<'a> {
     Zero,
     Suc(&'a Peano<'a>),
@@ -22,7 +23,7 @@ fn zero<'a>() -> Peano<'a> {
     Peano::Zero
 }
 
-fn suc<'a>(n: &'a Peano) -> Peano<'a> {
+fn _suc<'a>(n: &'a Peano) -> Peano<'a> {
     Peano::Suc(n)
 }
 
@@ -56,5 +57,10 @@ fn test_impl_suc() {
 }
 
 fn main() {
-    println!("Hello, world!");
+    println!("Peano::Zero -> {:?}", zero());
+    println!("zero().to_i() -> {:?}", zero().to_i());
+    println!("zero().suc() -> {:?}", zero().suc());
+    println!("zero().suc().to_i() -> {:?}", zero().suc().to_i());
+    println!("zero().suc().suc() -> {:?}", zero().suc().suc());
+    println!("zero().suc().suc().to_i() -> {:?}", zero().suc().suc().to_i());
 }
