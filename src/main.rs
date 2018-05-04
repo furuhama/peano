@@ -6,7 +6,7 @@ enum Peano<'a> {
     Suc(&'a Peano<'a>),
 }
 
-impl <'a> Peano<'a> {
+impl<'a> Peano<'a> {
     fn to_i(&self) -> u32 {
         match *self {
             Peano::Zero => 0,
@@ -27,6 +27,25 @@ fn _suc<'a>(n: &'a Peano) -> Peano<'a> {
     Peano::Suc(n)
 }
 
+fn main() {
+    // Zero
+    println!("Peano::Zero -> {:?}", zero());
+    println!("zero().to_i() -> {:?}", zero().to_i());
+
+    // One
+    println!("zero().suc() -> {:?}", zero().suc());
+    println!("zero().suc().to_i() -> {:?}", zero().suc().to_i());
+
+    // Two
+    println!("zero().suc().suc() -> {:?}", zero().suc().suc());
+    println!(
+        "zero().suc().suc().to_i() -> {:?}",
+        zero().suc().suc().to_i()
+    );
+}
+
+// ===================== tests =====================
+
 #[test]
 fn test_zero() {
     assert!(match zero() {
@@ -42,7 +61,7 @@ fn test_to_i() {
 
 #[test]
 fn test_suc() {
-    assert!(match suc(&zero()) {
+    assert!(match _suc(&zero()) {
         Peano::Suc(_) => true,
         _ => false,
     });
@@ -54,13 +73,4 @@ fn test_impl_suc() {
         Peano::Suc(_) => true,
         _ => false,
     });
-}
-
-fn main() {
-    println!("Peano::Zero -> {:?}", zero());
-    println!("zero().to_i() -> {:?}", zero().to_i());
-    println!("zero().suc() -> {:?}", zero().suc());
-    println!("zero().suc().to_i() -> {:?}", zero().suc().to_i());
-    println!("zero().suc().suc() -> {:?}", zero().suc().suc());
-    println!("zero().suc().suc().to_i() -> {:?}", zero().suc().suc().to_i());
 }
